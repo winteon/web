@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Right Side Menu Horizontal to Vertical with Dividers</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            public: ['Public Sans', 'sans-serif'],
+            goodtiming: ['GoodTiming', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="relative pt-16 font-public">
+
+  <!-- Logo -->
+  <div class="fixed top-4 left-4 z-50">
+    <img src="logo.png" id="logo" alt="Logo" class="w-12 h-auto" />
+  </div>
+
+  <!-- Menu -->
+  <nav id="menu" class="horizontal font-medium select-none">
+    <a href="#hero" data-section="hero" class="hover:text-primary1">Home</a>
+    <a href="#products" data-section="products" class="hover:text-primary1">Products</a>
+    <a href="#about" data-section="about" class="hover:text-primary1">About</a>
+    <a href="#contact" data-section="contact" class="hover:text-primary1">Contact</a>
+  </nav>
+
+  <!-- Sections -->
+  <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-8 text-center">
+    <h1 class="text-6xl font-extrabold mb-6 max-w-4xl leading-tight">
+      Simplifying Procurement <br> with AI
+    </h1>
+    <p class="max-w-xl text-lg mb-10 text-gray-700">
+      AI-powered processes that align teams and reduce risk, delivering faster procurement with higher value
+    </p>
+    <a href="#about"
+      class="px-8 py-3 rounded-md bg-[var(--primary1)] text-white font-semibold hover:bg-[var(--primary2)] transition">
+      Learn More
+    </a>
+  </section>
+
+  <section id="products" class="min-h-screen flex flex-col items-center justify-center px-8 py-16 bg-[var(--primary1)]">
+    <h2 class="text-5xl font-bold mb-10 text-center text-white">What Winteon Can Do</h2>
+
+    <div class="grid gap-12 md:grid-cols-3 max-w-7xl w-full">
+      <article class="rounded-xl shadow-lg p-6 flex flex-col items-start text-left bg-white">
+        <h3 class="text-xl font-semibold mb-2">Talk to stakeholders</h3>
+        <p>Resolve internal friction by surfacing misalignments and harmonizing requirements, KPIs and policies.</p>
+      </article>
+      <article class="rounded-xl shadow-lg p-6 flex flex-col items-start text-left bg-white">
+        <h3 class="text-xl font-semibold mb-2">Define the scope</h3>
+        <p>Bring clarity to procurement scope with shared, AI-assisted requirements gathering.</p>
+      </article>
+      <article class="rounded-xl shadow-lg p-6 flex flex-col items-start text-left bg-white">
+        <h3 class="text-xl font-semibold mb-2">Streamline processes</h3>
+        <p>Automate repetitive steps and cut delays with intelligent, dynamic workflows.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <section id="about" class="min-h-screen flex flex-col md:flex-row items-center justify-center px-8 gap-20">
+    <div class="md:w-1/2 max-w-xl text-left">
+      <h2 class="text-5xl font-bold mb-8">About Winteon</h2>
+      <p class="text-lg leading-relaxed">
+        Winteon leverages AI to transform fragmented and unclear procurement workflows into streamlined, aligned
+        processes. By harmonizing KPIs, policies, and priorities across teams, we eliminate confusion and delays. Our
+        platform automates repetitive tasks and simplifies approvals, turning procurement from a costly bottleneck into
+        a strategic enabler that accelerates business growth and operational efficiency.
+      </p>
+    </div>
+    <div class="md:w-5/8 flex justify-center">
+      <img src="happy.png" alt="About Winteon" class="rounded-2xl shadow-xl max-w-full" />
+    </div>
+  </section>
+
+
+  <section id="contact" class="min-h-screen flex flex-col justify-center px-8 py-20 bg-[var(--primary1)]">
+    <h2 class="text-5xl font-bold mb-10 text-center text-white">Get in Touch</h2>
+    <form class="grid gap-8 max-w-3xl mx-auto w-full">
+      <input type="text" placeholder="Your Name" required
+        class="px-6 py-4 rounded-md bg-white text-[var(--primary1)] placeholder-[var(--primary3)] focus:outline-none focus:ring-2 focus:ring-[var(--primary2)]" />
+      <input type="email" placeholder="Your Email" required
+        class="px-6 py-4 rounded-md bg-white text-[var(--primary1)] placeholder-[var(--primary3)] focus:outline-none focus:ring-2 focus:ring-[var(--primary2)]" />
+      <textarea placeholder="Your Message" required rows="5"
+        class="px-6 py-4 rounded-md bg-white text-[var(--primary1)] placeholder-[var(--primary3)] focus:outline-none focus:ring-2 focus:ring-[var(--primary2)]"></textarea>
+      <button type="submit"
+        class="px-8 py-4 rounded-md bg-white text-[var(--primary1)] font-bold hover:bg-[var(--primary2)] hover:text-white transition">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <footer id="footer" class="fixed bottom-0 w-full text-center py-4 text-sm text-white bg-[var(--primary1)] z-50">
+    © 2025 Winteon. All rights reserved.
+  </footer>
+
+
+</body>
+<script>
+  const menu = document.getElementById('menu');
+  menu.classList.add('horizontal');
+  const menuLinks = menu.querySelectorAll('a');
+  const sections = [...menuLinks].map(link => document.getElementById(link.dataset.section));
+
+  function isColorDark(rgb) {
+    const [r, g, b] = rgb.match(/\d+/g).map(Number);
+    const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+    return luminance < 128;
+  }
+
+  function setMenuColor() {
+    const scrollPos = window.scrollY + window.innerHeight / 10;
+    let currentIndex = 0;
+
+    sections.forEach((section, idx) => {
+      if (section.offsetTop <= scrollPos) {
+        currentIndex = idx;
+      }
+    });
+
+    const activeSection = sections[currentIndex];
+    const computedStyle = window.getComputedStyle(activeSection);
+    const bgColor = computedStyle.backgroundColor;
+    const isDark = isColorDark(bgColor);
+
+    menuLinks.forEach((link, idx) => {
+      link.classList.remove('font-bold', 'text-xl', 'text-white', 'text-gray-600');
+      link.style.color = ''; // Reset inline color
+
+      if (idx === currentIndex) {
+        link.classList.add('font-bold', 'text-xl');
+        link.style.color = isDark ? 'white' : 'var(--primary1)';
+      } else {
+        link.classList.add(isDark ? 'text-white' : 'text-gray-600');
+      }
+    });
+
+    const logo = document.getElementById('logo');
+    if (logo) {
+      logo.src = isDark ? 'logo-white.png' : 'logo.png';
+    }
+  }
+
+
+  window.addEventListener('scroll', setMenuColor);
+  window.addEventListener('resize', setMenuColor);
+  window.addEventListener('load', setMenuColor);
+
+  setMenuColor();
+</script>
+
+
+</html>

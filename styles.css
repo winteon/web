@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./fonts/PublicSans-Light.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GoodTiming';
+  src: url('./fonts/GoodTiming.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary1: #385e72;
+  --primary2: #8db2c6;
+  --primary3: #f2f3f7;
+}
+
+body {
+  background-color: white;
+  color: var(--primary1);
+}
+
+#menu {
+  position: fixed;
+  right: 2rem;
+  top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  background: transparent;
+  z-index: 50;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: var(--primary2);
+  align-items: center;
+}
+
+#menu img.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 1rem;
+}
+
+#menu.horizontal {
+  flex-direction: row;
+  border-left: none;
+  padding-left: 0;
+  height: 3rem;
+}
+
+#menu.vertical {
+  flex-direction: column;
+  top: 15%;
+  transform: translateY(-50%);
+  gap: 1.25rem;
+  padding-left: 1rem;
+  border-left: none;
+  height: auto;
+  font-size: 1.125rem;
+}
+
+#menu.horizontal a {
+  border-right: none;
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+#menu.vertical a {
+  border-bottom: 1px solid var(--primary2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#menu a {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  color: var(--primary2);
+  text-decoration: none;
+}
+
+#menu a:hover {
+  color: var(--primary1);
+}
+
+#menu a.font-bold {
+  color: var(--primary1);
+}
+
+    /* Sections */
+    #hero {
+      background-color: white;
+      color: var(--primary1);
+      text-align: center;
+    }
+    #hero h1 span {
+      color: var(--primary1);
+    }
+    #hero a {
+      background-color: var(--primary1);
+      color: white;
+      font-weight: 600;
+    }
+    #hero a:hover {
+      background-color: var(--primary2);
+    }
+
+    #products {
+      background-color: var(--primary3);
+      color: var(--primary1);
+    }
+    #products h2 {
+      color: var(--primary1);
+    }
+    #products article {
+      background-color: white;
+      color: var(--primary1);
+    }
+
+    #about {
+      background-color: white;
+      color: var(--primary1);
+    }
+    #about h2 {
+      color: var(--primary1);
+    }
+    #about p {
+      color: var(--primary1);
+    }
+
+    #contact {
+      background-color: var(--primary1);
+      color: white;
+    }
+    #contact h2 {
+      color: white;
+    }
+    #contact input, #contact textarea {
+      background-color: var(--primary2);
+      color: white;
+      border: none;
+    }
+    #contact input::placeholder, #contact textarea::placeholder {
+      color: rgba(255 255 255 / 0.7);
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary1);
+    }
+    #contact button {
+      background-color: white;
+      color: var(--primary1);
+      font-weight: 700;
+    }
+    #contact button:hover {
+      background-color: var(--primary2);
+      color: white;
+    }
